@@ -49,7 +49,6 @@ public class Input {
     }
 
 
-    fuck this vegatable stock, id better wash my cock;
 
     public int check1(Input  first, Input second){
         int result = 0;
@@ -81,7 +80,7 @@ public class Input {
     }
 
     public int step2(Input first, Input second, int pos1,  int pos2){
-dasdadsads
+//here
 
     }
 
