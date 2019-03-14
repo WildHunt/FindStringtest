@@ -21,7 +21,11 @@ public class Main {
         System.out.println(line1);
         System.out.println(line2);
 
-       System.out.println(line1.check1(line1,line2));
+        line1.convertLine1(line1);
+        line1.convertLine2(line2);
+        line1.printMatrix();
+
+      // System.out.println(line1.check1(line1,line2));
 
     }
 }
