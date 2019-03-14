@@ -15,76 +15,24 @@ public class Input {
     }
 
     public int check(Input  first, Input second){
-        int result = 0;
-        int temp=0;
-        int i,j =0;
-        int jq;
+        char matrix[][];
 
-        for (i=0; i< first.line.length; i++){
-            for (j=0; j < second.line.length;j++){
-                jq=j;
-                if (first.line[i] == second.line[j]){
-                   // temp++;
-                        for (int iq= i; iq<(first.line.length-i);iq++){
-                            if ((first.line[iq] == second.line[jq]) && (jq<second.line.length)){
-                                temp++;
-                                jq++;
-                            }
-                        }
-                }
+        for (int i = 0; i < first.line.length; i++) {
+            for (int j = 0; j < first.line[i]; j++) {
+               // System.out.print([i][j] + "\t");
+                matrix
             }
-
-//            if (first.line[i] == second.line[j]){
-//                temp++;
-//                for (int q=0; q < (second.line.length-j);q++){
-//
-//                }
-            }
-
-
-          //  j++;
-
-
-        //System.out.println(result);
-
-        return temp;
-    }
-
-
-
-    public int check1(Input  first, Input second){
-        int result = 0;
-        int temp=0;
-        int i,j =0;
-        int jq;
-        int _i, _j;
-
-        for (i=0; i< first.line.length; i++) {
-            for (j = 0; j < second.line.length; j++) { // этот цикл повторяется
-                if (first.line[i] == second.line[j]){ // Нашел первую схожесть, ищу дальше
-                    _i=i; // тут ошибка
-                    _j=j;
-                        do{
-                            if (first.line[i] == second.line[j]) {
-                                _j++;
-                                _i++;
-                                temp++;
-                            }
-
-
-                        }while (_j<4);
-
-
-                }
-            }
+            System.out.println();
         }
+    }
+
+
         return temp;
     }
 
-    public int step2(Input first, Input second, int pos1,  int pos2){
-//here
 
-    }
+
+
 
 
 
