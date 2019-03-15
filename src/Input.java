@@ -36,6 +36,93 @@ public class Input {
         }
     }
 
+    public void check1(Input first, Input second){
+        char match='0';
+        System.out.println(first.line.length);
+//        if (matrix[1][0]== matrix[0][1]){
+//            matrix[1][1]=match;
+//        }
+//        if (matrix[1][0]== matrix[0][2]){
+//            matrix[1][2]=match;
+//        }
+//        // вторая строка
+//        if (matrix[2][0]== matrix[0][1]){
+//            matrix[2][1]=match;
+//        }
+//        if (matrix[2][0]== matrix[0][2]){
+//            matrix[2][2]=match;
+//        }
+
+        ////////
+//        if (matrix[0][1] == matrix[1][0]){
+//            matrix[1][1]=match;
+//        }
+//
+//        if (matrix[0][1] == matrix[2][0]){
+//            matrix[2][1]=match;
+//        }
+//
+//        if (matrix[0][1] == matrix[3][0]){
+//            matrix[3][1]=match;
+//        }
+        //////////
+        // i = остается тот же, это строка слева
+        int j=1;// для вставки матч
+        int i1=0;
+        int i2=1;
+        ////
+
+
+
+//        for (int i=1; i<=5;i++){
+//            if (matrix[i1][i2] == matrix[i][0]){
+//                matrix[j][1]=match;
+//            }
+//            j++;
+//        }
+//        i1=0;
+//        i2=2;// увеличивается каждый цикл на 1
+//        j=1; //всегда  начинается с 1
+//        for (int i=1; i<=5;i++){
+//            if (matrix[i1][i2] == matrix[i][0]){
+//                matrix[j][2]=match;
+//            }
+//            j++;
+//        }
+
+
+        ///
+
+        int ma=0;
+        for (int ch=0;ch<5;ch++){
+            j=1;
+            ma++;
+            for (int i=1; i<=5;i++){
+                if (matrix[i1][i2] == matrix[i][0]){
+                    matrix[j][ma]=match;
+                }
+                j++;
+            }
+            i2++;
+
+        }
+
+
+    }
+
+    public void check(Input first, Input second){
+        char match='0';
+        System.out.println(first.line.length);
+        for (int i=1; i< first.line.length;i++){
+            for (int j=1; j<= second.line.length;j++){
+                if (first.line[i]==second.line[j-1]){
+                    matrix[i][j]=match;
+                }
+
+            }
+        }
+    }
+
 
 
 
