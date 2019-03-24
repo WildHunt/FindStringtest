@@ -110,7 +110,7 @@ public class Input {
 
     }
 
-    public void check(Input first, Input second){
+        public void check(Input first, Input second){
         char match='0';
         System.out.println(first.line.length);
         for (int i=1; i< first.line.length;i++){
