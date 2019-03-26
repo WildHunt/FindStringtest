@@ -1,5 +1,5 @@
-# FindString_test
-try here
-test
-14.03
-15.03 - finding elements
+# Longest Common Subsequence 
+##### `Roman Makeev, for Gdansk University`
+
+The program read 2 lines and output lcs of them
+

@@ -1,136 +1,106 @@
-import java.util.Arrays;
-import java.util.*;
+/**
+ * Roman Makeev, for Gdansk University
+ */
 
-//update
+class Input {
 
-public class Input {
-    //public String line1;
+    private final char[] X;
+    private final char[] Y;
 
-  //  public String line2;
-
-    public char[] line;
-    char[][] matrix = new char[10][10];
-
-
-    public Input(char[] line) {
-        this.line = line;
+    public Input(char[] x, char[] y) {
+        X = x;
+        Y = y;
     }
 
-    public void convertLine1(Input  first){
-        for (int i=0; i<first.line.length;i++)
-            matrix[0][i+1]= first.line[i];
+    /**
+     * @return - length of lcs
+     */
+
+     public int lcs()
+    {
+        int[][] L = new int[X.length + 1][Y.length + 1];
+
+        for (int i=0; i<=X.length; i++)
+        {
+            for (int j=0; j<=Y.length; j++)
+            {
+                if (i == 0 || j == 0)
+                    L[i][j] = 0;
+                else if (X[i-1] == Y[j-1])
+                    L[i][j] = L[i-1][j-1] + 1;
+                else
+                 L[i][j] = Math.max(L[i-1][j], L[i][j-1]);
+                //print
+            }
+            printMatrix(L);
+
+        }
+        printlcs(L);
+
+        return L[X.length][Y.length];
     }
 
-    public void convertLine2(Input second){
-        for (int i=0; i<second.line.length;i++)
-            matrix[i+1][0]= second.line[i];
-    }
+    /**
+     * Copy
+     * @param matrix - matrix [+1][+1]
+     */
 
-
-    public void printMatrix(){
+    private void printMatrix(int[][] matrix){
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + "\t");
             }
             System.out.println();
         }
+        System.out.println("\n");
+
+
     }
+    //
 
-    public void check1(Input first, Input second){
-        char match='0';
-        System.out.println(first.line.length);
-//        if (matrix[1][0]== matrix[0][1]){
-//            matrix[1][1]=match;
-//        }
-//        if (matrix[1][0]== matrix[0][2]){
-//            matrix[1][2]=match;
-//        }
-//        // вторая строка
-//        if (matrix[2][0]== matrix[0][1]){
-//            matrix[2][1]=match;
-//        }
-//        if (matrix[2][0]== matrix[0][2]){
-//            matrix[2][2]=match;
-//        }
+    /** Took from geeksforgeeks.org
+     *
+     * @param L matrix [+1][+1]
+     */
 
-        ////////
-//        if (matrix[0][1] == matrix[1][0]){
-//            matrix[1][1]=match;
-//        }
-//
-//        if (matrix[0][1] == matrix[2][0]){
-//            matrix[2][1]=match;
-//        }
-//
-//        if (matrix[0][1] == matrix[3][0]){
-//            matrix[3][1]=match;
-//        }
-        //////////
-        // i = остается тот же, это строка слева
-        int j=1;// для вставки матч
-        int i1=0;
-        int i2=1;
-        ////
+    private void printlcs(int[][] L) {
+        int index = L[X.length][Y.length];
+        int temp = index;
 
+        char[] lcs = new char[index + 1];
+        lcs[index] = ' ';
+        int i = X.length, j = Y.length;
 
+        while (i > 0 && j > 0) {
 
-//        for (int i=1; i<=5;i++){
-//            if (matrix[i1][i2] == matrix[i][0]){
-//                matrix[j][1]=match;
-//            }
-//            j++;
-//        }
-//        i1=0;
-//        i2=2;// увеличивается каждый цикл на 1
-//        j=1; //всегда  начинается с 1
-//        for (int i=1; i<=5;i++){
-//            if (matrix[i1][i2] == matrix[i][0]){
-//                matrix[j][2]=match;
-//            }
-//            j++;
-//        }
-
-
-        ///
-
-        int ma=0;
-        for (int ch=0;ch<5;ch++){
-            j=1;
-            ma++;
-            for (int i=1; i<=5;i++){
-                if (matrix[i1][i2] == matrix[i][0]){
-                    matrix[j][ma]=match;
-                }
-                j++;
+            if (X[i - 1] == Y[j - 1]) {
+                lcs[index - 1] = X[i - 1];
+                i--;
+                j--;
+                index--;
             }
-            i2++;
-
+            else if (L[i - 1][j] > L[i][j - 1])
+                i--;
+            else
+                j--;
         }
 
+        System.out.print("LCS of "+toString(X)+" and "+toString(Y)+" is: ");
 
+        for(int k=0;k<=temp;k++)
+            System.out.print(lcs[k]);
+        System.out.println();
     }
 
-        public void check(Input first, Input second){
-        char match='0';
-        System.out.println(first.line.length);
-        for (int i=1; i< first.line.length;i++){
-            for (int j=1; j<= second.line.length;j++){
-                if (first.line[i]==second.line[j-1]){
-                    matrix[i][j]=match;
-                }
+    /**
+     * From char array to String
+     * @param temp_char - for converting
+     * @return - String value
+     */
 
-            }
-        }
-    }
-
-
-
-
-
-    @Override
-    public String toString() {
-        return "Input{" +
-                "line=" + Arrays.toString(line) +
-                '}';
+    @SuppressWarnings("UnnecessaryLocalVariable")
+    private String toString(char[] temp_char) {
+        String temp_string = new String(temp_char);
+        return  (temp_string);
     }
 }

@@ -1,10 +1,15 @@
+/**
+ * Roman Makeev, for Gdansk University
+ */
+
 import java.util.Scanner;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
-	// write your code here
-
+        /**
+         * Scanner for 2 lines
+         */
         System.out.print("Input a line: ");
         Scanner in = new Scanner(System.in);
         String inputLine1 = in.nextLine();
@@ -12,23 +17,11 @@ public class Main {
         String inputLine2 = in.nextLine();
         in.close();
 
-        char[] stringToCharArray = inputLine1.toCharArray();
-        char[] stringToCharArray1 = inputLine2.toCharArray();
+        /**
+         * Calling lcs function and print
+         */
+        Input line1 = new Input(inputLine1.toCharArray(), inputLine2.toCharArray());
 
-        Input line1 = new Input(inputLine1.toCharArray());
-        Input line2 = new Input(inputLine2.toCharArray());
-
-        System.out.println(line1);
-        System.out.println(line2);
-
-        line1.convertLine1(line1);
-        line1.convertLine2(line2);
-
-        line1.check1(line1,line2);
-
-        line1.printMatrix();
-
-      // System.out.println(line1.check1(line1,line2));
-
+        System.out.println("Length of LCS is" + " " + line1.lcs());
     }
 }
